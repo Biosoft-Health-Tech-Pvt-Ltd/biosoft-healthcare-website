@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -17,7 +16,8 @@ import {
   Award,
   Monitor,
   Database,
-  Settings
+  Settings,
+  Play
 } from "lucide-react";
 
 const Index = () => {
@@ -46,6 +46,15 @@ const Index = () => {
     }));
   };
 
+  const userExperienceVideos = [
+    { id: "cYVD59tuOLI", title: "Healthcare Provider Experience" },
+    { id: "AvARNcMAVYM", title: "Clinical Workflow Enhancement" },
+    { id: "4LlIrLdu7PE", title: "Population Health Management" },
+    { id: "bPzttnhdQrE", title: "Real-time Analytics" },
+    { id: "27TUVrQGa0k", title: "Patient Care Coordination" },
+    { id: "wuHF8QXoiro", title: "Healthcare Intelligence Platform" }
+  ];
+
   return (
     <div className="min-h-screen bg-white">
       {/* Navigation */}
@@ -61,7 +70,8 @@ const Index = () => {
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">Home</a>
-              <a href="#services" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">Services</a>
+              <a href="#services" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">eBios Platform</a>
+              <a href="#experiences" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">User Experiences</a>
               <a href="#about" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">About</a>
               <a href="#contact" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">Contact</a>
             </div>
@@ -78,18 +88,26 @@ const Index = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
-                Healthcare Made <span className="text-[#4CAF50]">Simple</span>
+                Redefine the way you <span className="text-[#4CAF50]">work</span>
               </h1>
               <p className="text-xl mb-8 opacity-90">
-                Transform your healthcare facility with Biosoft's comprehensive Hospital Information Systems. 
-                Streamline operations, enhance patient care, and boost efficiency with our cutting-edge solutions.
+                Unifying data seamlessly across the healthcare ecosystem, our world-leading platform eBios uncovers valuable insights from health records, empowering individuals and institutions to be accountable for their care.
+              </p>
+              <p className="text-lg mb-8 opacity-90">
+                eBios is a healthcare intelligence platform that gathers and analyzes data for personalized, cohort, and population health management. Experience real-time insights and predictive analytics for enhanced clinical outcomes and improved population health.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button size="lg" className="bg-[#4CAF50] hover:bg-[#45a049] text-white px-8 py-3">
                   Get Started Today
                 </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#4A90E2] px-8 py-3">
-                  Watch Demo
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white text-white hover:bg-white hover:text-[#4A90E2] px-8 py-3"
+                  onClick={() => window.open('https://youtu.be/JHpFFxnHtzc?si=ugJzJDEXk6Wu_Gee', '_blank')}
+                >
+                  <Play className="mr-2 h-5 w-5" />
+                  Watch Platform Demo
                 </Button>
               </div>
             </div>
@@ -124,11 +142,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Comprehensive Healthcare Solutions
+              eBios Healthcare Intelligence Platform
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Empower your healthcare facility with our integrated Hospital Information Systems 
-              designed to streamline operations and enhance patient care.
+              Comprehensive healthcare data unification and analytics platform designed to transform 
+              healthcare delivery through intelligent insights and predictive analytics.
             </p>
           </div>
           
@@ -138,12 +156,12 @@ const Index = () => {
                 <div className="mx-auto w-16 h-16 bg-[#FF7A3D]/10 rounded-full flex items-center justify-center mb-4">
                   <Monitor className="w-8 h-8 text-[#FF7A3D]" />
                 </div>
-                <CardTitle className="text-xl text-gray-900">Hospital Information Systems</CardTitle>
+                <CardTitle className="text-xl text-gray-900">Real-time Insights</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 text-center">
-                  Complete HIS solutions covering patient management, electronic health records, 
-                  billing, and administrative functions in one integrated platform.
+                  Advanced analytics and real-time monitoring provide immediate insights into patient care, 
+                  clinical outcomes, and operational efficiency across your healthcare ecosystem.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -153,12 +171,12 @@ const Index = () => {
                 <div className="mx-auto w-16 h-16 bg-[#4A90E2]/10 rounded-full flex items-center justify-center mb-4">
                   <Database className="w-8 h-8 text-[#4A90E2]" />
                 </div>
-                <CardTitle className="text-xl text-gray-900">Data Management</CardTitle>
+                <CardTitle className="text-xl text-gray-900">Data Unification</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 text-center">
-                  Secure, HIPAA-compliant data storage and management systems with advanced 
-                  analytics and reporting capabilities for informed decision-making.
+                  Seamlessly integrate and unify data from multiple healthcare sources, creating a 
+                  comprehensive view of patient health records and institutional performance.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -168,12 +186,12 @@ const Index = () => {
                 <div className="mx-auto w-16 h-16 bg-[#4CAF50]/10 rounded-full flex items-center justify-center mb-4">
                   <Settings className="w-8 h-8 text-[#4CAF50]" />
                 </div>
-                <CardTitle className="text-xl text-gray-900">System Integration</CardTitle>
+                <CardTitle className="text-xl text-gray-900">Predictive Analytics</CardTitle>
               </CardHeader>
               <CardContent>
                 <CardDescription className="text-gray-600 text-center">
-                  Seamless integration with existing healthcare systems, medical devices, 
-                  and third-party applications for unified healthcare operations.
+                  Leverage machine learning and AI-powered predictive analytics for enhanced clinical 
+                  decision-making, population health management, and proactive care delivery.
                 </CardDescription>
               </CardContent>
             </Card>
@@ -181,8 +199,55 @@ const Index = () => {
         </div>
       </section>
 
+      {/* User Experiences Section */}
+      <section id="experiences" className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              User Experiences
+            </h2>
+            <p className="text-xl text-gray-600">
+              See how healthcare professionals are transforming patient care with eBios
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {userExperienceVideos.map((video, index) => (
+              <Card key={video.id} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
+                <CardHeader className="p-0">
+                  <div className="relative aspect-video bg-gray-100 rounded-t-lg overflow-hidden">
+                    <img 
+                      src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`}
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-black/20 flex items-center justify-center group hover:bg-black/30 transition-colors cursor-pointer"
+                         onClick={() => window.open(`https://youtu.be/${video.id}`, '_blank')}>
+                      <div className="w-16 h-16 bg-[#FF7A3D] rounded-full flex items-center justify-center group-hover:bg-[#e6692d] transition-colors">
+                        <Play className="w-8 h-8 text-white ml-1" />
+                      </div>
+                    </div>
+                  </div>
+                </CardHeader>
+                <CardContent className="p-6">
+                  <CardTitle className="text-lg text-gray-900 mb-2">{video.title}</CardTitle>
+                  <Button 
+                    variant="outline" 
+                    className="w-full"
+                    onClick={() => window.open(`https://youtu.be/${video.id}`, '_blank')}
+                  >
+                    <Play className="mr-2 h-4 w-4" />
+                    Watch Experience
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
@@ -238,7 +303,7 @@ const Index = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 bg-gray-50">
+      <section id="contact" className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Information */}
@@ -378,8 +443,8 @@ const Index = () => {
                 />
               </div>
               <p className="text-gray-400 mb-4">
-                Leading provider of Hospital Information Systems and healthcare management solutions. 
-                Transforming healthcare facilities across India with innovative technology.
+                Leading provider of eBios Healthcare Intelligence Platform and healthcare management solutions. 
+                Transforming healthcare facilities across India with innovative data unification technology.
               </p>
               <div className="flex items-center space-x-2 text-sm text-gray-400">
                 <Award className="w-4 h-4" />
@@ -391,8 +456,8 @@ const Index = () => {
               <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
               <ul className="space-y-2 text-gray-400">
                 <li><a href="#home" className="hover:text-[#FF7A3D] transition-colors">Home</a></li>
-                <li><a href="#services" className="hover:text-[#FF7A3D] transition-colors">Services</a></li>
-                <li><a href="#about" className="hover:text-[#FF7A3D] transition-colors">About Us</a></li>
+                <li><a href="#services" className="hover:text-[#FF7A3D] transition-colors">eBios Platform</a></li>
+                <li><a href="#experiences" className="hover:text-[#FF7A3D] transition-colors">User Experiences</a></li>
                 <li><a href="#contact" className="hover:text-[#FF7A3D] transition-colors">Contact</a></li>
               </ul>
             </div>
@@ -409,7 +474,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 Biosoft Ltd. All rights reserved. Healthcare technology solutions you can trust.</p>
+            <p>&copy; 2024 Biosoft Ltd. All rights reserved. Healthcare intelligence platform you can trust.</p>
           </div>
         </div>
       </footer>
