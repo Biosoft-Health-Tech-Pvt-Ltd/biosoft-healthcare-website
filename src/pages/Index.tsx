@@ -53,8 +53,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-[#FF7A3D]">Biosoft</div>
-              <div className="ml-2 text-sm text-gray-600">Healthcare Technology</div>
+              <img 
+                src="/lovable-uploads/3218728f-3748-4813-bb97-79d736e0031c.png" 
+                alt="Biosoft Logo" 
+                className="h-10 w-auto"
+              />
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-700 hover:text-[#FF7A3D] transition-colors">Home</a>
@@ -368,8 +371,11 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center mb-4">
-                <div className="text-2xl font-bold text-[#FF7A3D]">Biosoft</div>
-                <div className="ml-2 text-sm text-gray-400">Healthcare Technology</div>
+                <img 
+                  src="/lovable-uploads/3218728f-3748-4813-bb97-79d736e0031c.png" 
+                  alt="Biosoft Logo" 
+                  className="h-8 w-auto"
+                />
               </div>
               <p className="text-gray-400 mb-4">
                 Leading provider of Hospital Information Systems and healthcare management solutions. 
