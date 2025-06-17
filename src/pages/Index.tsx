@@ -40,10 +40,11 @@ const Index = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
   const [videoModalOpen, setVideoModalOpen] = useState(false);
+  const [previewVideoId, setPreviewVideoId] = useState<string | null>(null); // State for user experience video preview
 
   // Lock body scroll when menu is open
   useEffect(() => {
-    if (mobileMenuOpen) {
+    if (mobileMenuOpen || videoModalOpen || previewVideoId) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -51,7 +52,7 @@ const Index = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [mobileMenuOpen]);
+  }, [mobileMenuOpen, videoModalOpen, previewVideoId]);
 
   // Trap focus inside menu
   useEffect(() => {
@@ -105,6 +106,14 @@ const Index = () => {
     { id: "27TUVrQGa0k", title: "Patient Care Coordination" },
     { id: "wuHF8QXoiro", title: "Healthcare Intelligence Platform" },
   ];
+
+  const handleOpenPreviewVideo = (id: string) => {
+    setPreviewVideoId(id);
+  };
+
+  const handleClosePreviewVideo = () => {
+    setPreviewVideoId(null);
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -246,7 +255,7 @@ const Index = () => {
             </div>
           </div>
         </div>
-        {/* Video Modal */}
+        {/* Hero Video Modal */}
         {videoModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fade-in">
             <div className="absolute inset-0" onClick={() => setVideoModalOpen(false)} aria-label="Close video modal" />
@@ -264,7 +273,7 @@ const Index = () => {
                 <iframe
                   width="100%"
                   height="100%"
-                  src="https://www.youtube.com/embed/JHpFFxnHtzc?autoplay=1&rel=0"
+                  src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1" // Placeholder for actual demo video
                   title="Biosoft Demo Video"
                   allow="autoplay; encrypted-media"
                   allowFullScreen
@@ -508,46 +517,74 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-24 bg-gradient-to-r from-biosoft-blue/10 to-biosoft-green/10">
-        {" "}
-        {/* Updated for subtlety */}
-        <div className="w-full px-2 md:px-8">
+      {/* Team Section - NEW DESIGN */}
+      <section className="py-24 bg-gray-50">
+        <div className="w-full px-4">
           <div className="text-center mb-20">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in">Our Teams</h2>
-            <p className="text-xl md:text-2xl text-gray-700 animate-fade-in delay-100">Meet the dedicated teams driving innovation and excellence at Biosoft.</p>
+            <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 animate-fade-in">Our Dedicated Teams</h2>
+            <p className="text-xl md:text-2xl text-gray-700 animate-fade-in delay-100">Meet the passionate individuals who drive our innovation and commitment to excellence.</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-            {/* Team 1 */}
-            <div className="bg-white rounded-xl p-10 md:p-14 shadow-2xl flex flex-col items-center transition-transform hover:scale-105">
-              <img
-                src="/lovable-uploads/Team1.jpeg"
-                alt="Healthcare Technology Team"
-                className="w-full h-80 md:h-[28rem] object-cover rounded-md border-8 border-biosoft-blue shadow-md mb-8"
-              />
-              <h3 className="text-xl md:text-xl font-bold text-biosoft-blue mb-3 animate-fade-in delay-100">Healthcare Technology Team</h3>
-              <p className="text-lg md:text-md text-gray-600 animate-fade-in delay-200">Experts in developing and implementing advanced healthcare solutions.</p>
-            </div>
-            {/* Team 2 */}
-            <div className="bg-white rounded-xl p-10 md:p-14 shadow-2xl flex flex-col items-center transition-transform hover:scale-105">
-              <img
-                src="/lovable-uploads/Team2.jpeg"
-                alt="Support & Implementation Team"
-                className="w-full h-80 md:h-[28rem] object-cover rounded-md border-8 border-biosoft-orange shadow-md mb-8"
-              />
-              <h3 className="text-xl md:text-xl font-bold text-biosoft-orange mb-3 animate-fade-in delay-100">Support & Implementation Team</h3>
-              <p className="text-lg md:text-md text-gray-600 animate-fade-in delay-200">Dedicated to ensuring smooth onboarding and ongoing client success.</p>
-            </div>
-            {/* Team 3 */}
-            <div className="bg-white rounded-xl p-10 md:p-14 shadow-2xl flex flex-col items-center transition-transform hover:scale-105">
-              <img
-                src="/lovable-uploads/Team3.jpeg"
-                alt="Strategy & Innovation Team"
-                className="w-full h-80 md:h-[28rem] object-cover rounded-md border-8 border-biosoft-green shadow-md mb-8"
-              />
-              <h3 className="text-xl md:text-xl font-bold text-biosoft-green mb-3 animate-fade-in delay-100">Strategy & Innovation Team</h3>
-              <p className="text-lg md:text-md text-gray-600 animate-fade-in delay-200">Driving growth and new initiatives for a healthier future.</p>
-            </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {/* Team 1: Healthcare Technology Team */}
+            <Card className="rounded-xl overflow-hidden shadow-lg border-t-8 border-biosoft-blue transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="/lovable-uploads/Team1.jpeg"
+                  alt="Healthcare Technology Team"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-biosoft-blue/30 group-hover:bg-biosoft-blue/40 transition-colors flex items-center justify-center">
+                  {/* Optional: Add an icon or text overlay here */}
+                </div>
+              </div>
+              <CardContent className="p-6 text-left">
+                <CardTitle className="text-2xl font-bold text-biosoft-blue mb-2 animate-fade-in delay-100">Healthcare Technology</CardTitle>
+                <CardDescription className="text-gray-700 text-base animate-fade-in delay-200">
+                  Our visionary engineers and developers build cutting-edge solutions that transform healthcare delivery.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            {/* Team 2: Support & Implementation Team */}
+            <Card className="rounded-xl overflow-hidden shadow-lg border-t-8 border-biosoft-orange transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="/lovable-uploads/Team2.jpeg"
+                  alt="Support & Implementation Team"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-biosoft-orange/30 group-hover:bg-biosoft-orange/40 transition-colors flex items-center justify-center">
+                  {/* Optional: Add an icon or text overlay here */}
+                </div>
+              </div>
+              <CardContent className="p-6 text-left">
+                <CardTitle className="text-2xl font-bold text-biosoft-orange mb-2 animate-fade-in delay-100">Client Success & Support</CardTitle>
+                <CardDescription className="text-gray-700 text-base animate-fade-in delay-200">
+                  Dedicated experts ensuring seamless onboarding and providing world-class support for our partners.
+                </CardDescription>
+              </CardContent>
+            </Card>
+
+            {/* Team 3: Strategy & Innovation Team */}
+            <Card className="rounded-xl overflow-hidden shadow-lg border-t-8 border-biosoft-green transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl">
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src="/lovable-uploads/Team3.jpeg"
+                  alt="Strategy & Innovation Team"
+                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-biosoft-green/30 group-hover:bg-biosoft-green/40 transition-colors flex items-center justify-center">
+                  {/* Optional: Add an icon or text overlay here */}
+                </div>
+              </div>
+              <CardContent className="p-6 text-left">
+                <CardTitle className="text-2xl font-bold text-biosoft-green mb-2 animate-fade-in delay-100">Strategy & Vision</CardTitle>
+                <CardDescription className="text-gray-700 text-base animate-fade-in delay-200">
+                  Pioneering new initiatives and charting the course for the future of healthcare intelligence.
+                </CardDescription>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
@@ -565,10 +602,14 @@ const Index = () => {
               <Card key={video.id} className="hover:shadow-lg transition-shadow duration-300 border-0 shadow-md">
                 <CardHeader className="p-0">
                   <div className="relative aspect-video bg-gray-100 rounded-t-lg overflow-hidden">
-                    <img src={`https://img.youtube.com/vi/${video.id}/maxresdefault.jpg`} alt={video.title} className="w-full h-full object-cover" />
+                    <img
+                      src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`} // Corrected thumbnail URL
+                      alt={video.title}
+                      className="w-full h-full object-cover"
+                    />
                     <div
                       className="absolute inset-0 bg-black/20 flex items-center justify-center group hover:bg-black/30 transition-colors cursor-pointer"
-                      onClick={() => window.open(`https://youtu.be/${video.id}`, "_blank")}
+                      onClick={() => handleOpenPreviewVideo(video.id)} // Open preview in modal
                     >
                       <div className="w-16 h-16 bg-biosoft-orange rounded-full flex items-center justify-center group-hover:bg-biosoft-orange/80 transition-colors">
                         <Play className="w-8 h-8 text-white ml-1" />
@@ -578,7 +619,7 @@ const Index = () => {
                 </CardHeader>
                 <CardContent className="p-6">
                   <CardTitle className="text-lg text-gray-900 mb-2 animate-fade-in delay-100">{video.title}</CardTitle>
-                  <Button variant="outline" className="w-full animate-fade-in delay-200" onClick={() => window.open(`https://youtu.be/${video.id}`, "_blank")}>
+                  <Button variant="outline" className="w-full animate-fade-in delay-200" onClick={() => handleOpenPreviewVideo(video.id)}>
                     <Play className="mr-2 h-4 w-4" />
                     Watch Experience
                   </Button>
@@ -588,6 +629,35 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* User Experience Video Preview Modal */}
+      {previewVideoId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm animate-fade-in">
+          <div className="absolute inset-0" onClick={handleClosePreviewVideo} aria-label="Close video modal" />
+          <div className="relative bg-white rounded-xl shadow-2xl max-w-2xl w-[90vw] p-0 animate-fade-slide-up">
+            <button
+              className="absolute top-2 right-2 z-10 p-2 rounded-full bg-white/80 hover:bg-white focus:outline-none focus:ring-2 focus:ring-biosoft-orange"
+              onClick={handleClosePreviewVideo}
+              aria-label="Close video"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="aspect-video w-full rounded-xl overflow-hidden">
+              <iframe
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/embed/${previewVideoId}?autoplay=1`} // Embed URL with autoplay
+                title="User Experience Video"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+                className="w-full h-full rounded-xl border-0"
+              />
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Contact Section */}
       <section id="contact" className="py-20 bg-gradient-to-r from-biosoft-blue to-biosoft-orange text-white">
