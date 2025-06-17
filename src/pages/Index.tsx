@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -83,8 +84,15 @@ const Index = () => {
       </nav>
 
       {/* Hero Section */}
-      <section id="home" className="bg-gradient-to-br from-[#4A90E2] to-[#FF7A3D] text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="home" className="bg-gradient-to-br from-[#4A90E2] to-[#FF7A3D] text-white py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img 
+            src="/lovable-uploads/bdddc305-43df-4300-8f15-68a2ee424522.png" 
+            alt="Healthcare Technology" 
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
@@ -104,7 +112,7 @@ const Index = () => {
                   size="lg" 
                   variant="outline" 
                   className="border-white text-white hover:bg-white hover:text-[#4A90E2] px-8 py-3"
-                  onClick={() => window.open('https://youtu.be/JHpFFxnHtzc?si=ugJzJDEXk6Wu_Gee', '_blank')}
+                  onClick={() => window.open('https://youtu.be/JHpFFxnHtzc?si=1ZdFvgAWfIXPiVG9', '_blank')}
                 >
                   <Play className="mr-2 h-5 w-5" />
                   Watch Platform Demo
@@ -137,9 +145,50 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-20 bg-gray-50">
+      {/* Main Platform Demo Section */}
+      <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+              Experience eBios Healthcare Intelligence Platform
+            </h2>
+            <p className="text-xl text-gray-600 mb-8">
+              Watch our comprehensive platform demonstration and see how eBios transforms healthcare data into actionable insights
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <div className="aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-2xl relative group">
+              <img 
+                src="https://img.youtube.com/vi/JHpFFxnHtzc/maxresdefault.jpg"
+                alt="eBios Platform Demo"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-black/30 flex items-center justify-center group-hover:bg-black/40 transition-colors cursor-pointer"
+                   onClick={() => window.open('https://youtu.be/JHpFFxnHtzc?si=1ZdFvgAWfIXPiVG9', '_blank')}>
+                <div className="w-24 h-24 bg-[#FF7A3D] rounded-full flex items-center justify-center group-hover:bg-[#e6692d] transition-colors group-hover:scale-110 transform">
+                  <Play className="w-12 h-12 text-white ml-2" />
+                </div>
+              </div>
+              <div className="absolute bottom-6 left-6 right-6 text-white">
+                <h3 className="text-2xl font-bold mb-2">eBios Platform Complete Overview</h3>
+                <p className="text-lg opacity-90">Discover how our healthcare intelligence platform revolutionizes patient care and clinical outcomes</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section id="services" className="py-20 bg-gray-50 relative">
+        <div className="absolute right-0 top-1/2 transform -translate-y-1/2 opacity-5 z-0">
+          <img 
+            src="/lovable-uploads/9e3d30fa-e4ad-4185-82af-fe8cf3a1273d.png" 
+            alt="Healthcare Innovation" 
+            className="w-96 h-96 object-cover"
+          />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
               eBios Healthcare Intelligence Platform
