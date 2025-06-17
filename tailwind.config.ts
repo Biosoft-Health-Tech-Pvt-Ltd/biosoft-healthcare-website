@@ -15,14 +15,15 @@ export default {
     extend: {
       colors: {
         biosoft: {
-          orange: "#F47C20",
+          orange: "#FF7A3D", // Updated to match usage in Index.tsx
           blue: {
-            DEFAULT: "#009FE3",
-            dark: "#005B9A",
+            DEFAULT: "#4A90E2", // Updated to match usage in Index.tsx
+            dark: "#2563eb", // Updated to match usage in Index.tsx
           },
           yellow: "#FFD600",
           white: "#FFFFFF",
-          gray: "#333333", // A general dark gray for text, can be adjusted
+          gray: "#333333",
+          green: "#4CAF50", // Added green color
         },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
